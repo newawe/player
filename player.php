@@ -1,4 +1,4 @@
-<?
+<?php
 //PHP to get project details from DB.
 $code;
 $lang;
@@ -37,24 +37,15 @@ $user = $row["User"];
 
 </style>
 
-<iframe class="demo" id="demo"src="#"></iframe>
+<iframe class="demo" id="demo"src=""></iframe>
 
 <script type="text/javascript">
-
-
-
-
-
-
-
-
-
 //All Info Defined Here
-var code = <? echo $code; ?>;
-var lang = <? echo $lang; ?>;
-var desc = <? echo $dec; ?>;
+var code = <?php echo $code; ?>;
+var lang = <?php echo $lang; ?>;
+var desc = <?php echo $dec; ?>;
 var name = <? echo $name; ?>;
-var user = <? echo $user; ?>;
+var user = <?php echo $user; ?>;
 function updateLive() {
         //Switch to interpret language. By defualt HTML. To add a language add a case. Default case is a message.
         switch(lang){
