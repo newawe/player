@@ -1,3 +1,27 @@
+<?
+//PHP to get project details from DB.
+$code;
+$lang;
+$id = $_GET['id'];
+
+$servername = "localhost";
+$username = "BMS_id";
+$password = "Password1";
+$dbname = "BMS_id";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+?>
+
+
+
+
+
+
 <style>
 .demo {
 	height: 300px;
@@ -10,33 +34,18 @@
 <iframe class="demo" id="demo"src="#"></iframe>
 
 <script type="text/javascript">
-var $_GET = {};
-if(document.location.toString().indexOf('?') !== -1) {
-    var query = document.location
-                   .toString()
-                   // get the query string
-                   .replace(/^.*?\?/, '')
-                   // and remove any existing hash string (thanks, @vrijdenker)
-                   .replace(/#.*$/, '')
-                   .split('&');
-
-    for(var i=0, l=query.length; i<l; i++) {
-       var aux = decodeURIComponent(query[i]).split('=');
-       $_GET[aux[0]] = aux[1];
-    }
-}
 
 
 
 
-var scriptslang = ["html","php"];
-var scriptscode = ["<h1>Hello - HTML</h1>","echo 'Hello - PHP';"];
 
 
 
 
-var code=scriptscode[$_GET['id']];
-var lang = scriptslang[$_GET['id']];
+
+
+var code = ;
+var lang = ;
 function updateLive() {
         //Switch to interpret language. By defualt HTML. To add a language add a case. Default case is a message.
         switch(lang){
