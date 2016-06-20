@@ -13,7 +13,13 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+$project = mysqli_query($con,"SELECT * FROM `Newawe_Project_Test` WHERE `ID` like $id");
+$row = mysqli_fetch_assoc($bots);
+$lang = $row["Lang"];
+$code = $row["Code"];
+$desc = $row["Description"];
+$name = $row["Name"];
+$user = $row["User"];
 
 ?>
 
@@ -43,9 +49,12 @@ if (!$conn) {
 
 
 
-
-var code = ;
-var lang = ;
+//All Info Defined Here
+var code = <? echo $code; ?>;
+var lang = <? echo $lang; ?>;
+var desc = <? echo $dec; ?>;
+var name = <? echo $name; ?>;
+var user = <? echo $user; ?>;
 function updateLive() {
         //Switch to interpret language. By defualt HTML. To add a language add a case. Default case is a message.
         switch(lang){
