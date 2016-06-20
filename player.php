@@ -5,8 +5,8 @@ $lang;
 $id = $_GET['id'];
 
 $servername = "localhost";
-$username = "BMS_id";
-$password = "Password1";
+$username = "*";
+$password = *";
 $dbname = "BMS_id";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
