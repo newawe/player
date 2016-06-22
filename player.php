@@ -1,26 +1,29 @@
 <?php
+
 //PHP to get project details from DB.
 $code;
 $lang;
 $id = $_GET['id'];
-
-$servername = "localhost";
+$servername = "*";
 $username = "*";
 $password = "*";
-$dbname = "BMS_id";
+$dbname = "*";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$project = mysqli_query($con,"SELECT * FROM `Newawe_Project_Test` WHERE `ID` like $id");
-$row = mysqli_fetch_assoc($bots);
+
+
+$project = mysqli_query($conn,"SELECT * FROM Newawe_Project_Test WHERE id = $id");
+$row = mysqli_fetch_assoc($project);
 $lang = $row["Lang"];
-$code = $row["Code"];
+$code = addslashes($row["Code"]);
 $desc = $row["Description"];
 $name = $row["Name"];
 $user = $row["User"];
 
+echo "<h2><b>".htmlentities($name)."</b></h2>"."<br>By <i>".$user."</i><br>Language: ".$lang."<br>";
 ?>
 
 
@@ -30,22 +33,31 @@ $user = $row["User"];
 
 <style>
 .demo {
-	height: 300px;
-	width: 300px;
-	border-color: #00A3C6;
+  height: 300px;
+  width: 300px;
+  border-color: #00A3C6;
 }
 
 </style>
 
-<iframe class="demo" id="demo"src=""></iframe>
-
+<iframe class="demo" id="demo"src="#"></iframe>
+<?php echo "<br><i>Description:</i> ".htmlentities($desc);?>
 <script type="text/javascript">
+
+
+
+
+
+
+
+
+
 //All Info Defined Here
-var code = <?php echo $code; ?>;
-var lang = <?php echo $lang; ?>;
-var desc = <?php echo $dec; ?>;
-var name = <? echo $name; ?>;
-var user = <?php echo $user; ?>;
+var code = "<?php echo $code; ?>";
+var lang = "<?php echo $lang; ?>";
+var desc = "<?php echo $desc; ?>";
+var name = "<?php echo $name; ?>";
+var user = "<?php echo $user; ?>";
 function updateLive() {
         //Switch to interpret language. By defualt HTML. To add a language add a case. Default case is a message.
         switch(lang){
