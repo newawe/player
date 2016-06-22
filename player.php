@@ -2,7 +2,7 @@
 //PHP to get project details from DB.
 $code;
 $lang;
-$id = mysqli_escape_string(htmlentities($_GET['id']));
+$id = htmlentities($_GET['id']);
 $servername = "*";
 $username = "*";
 $password = "*";
