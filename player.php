@@ -1,9 +1,8 @@
 <?php
-
 //PHP to get project details from DB.
 $code;
 $lang;
-$id = $_GET['id'];
+$id = mysqli_escape_string(htmlentities($_GET['id']));
 $servername = "*";
 $username = "*";
 $password = "*";
@@ -19,6 +18,7 @@ $project = mysqli_query($conn,"SELECT * FROM Newawe_Project_Test WHERE id = $id"
 $row = mysqli_fetch_assoc($project);
 $lang = $row["Lang"];
 $code = addslashes($row["Code"]);
+$code = str_replace(array("\n", "\r"), '', $code);
 $desc = $row["Description"];
 $name = $row["Name"];
 $user = $row["User"];
@@ -55,9 +55,6 @@ echo "<h2><b>".htmlentities($name)."</b></h2>"."<br>By <i>".$user."</i><br>Langu
 //All Info Defined Here
 var code = "<?php echo $code; ?>";
 var lang = "<?php echo $lang; ?>";
-var desc = "<?php echo $desc; ?>";
-var name = "<?php echo $name; ?>";
-var user = "<?php echo $user; ?>";
 function updateLive() {
         //Switch to interpret language. By defualt HTML. To add a language add a case. Default case is a message.
         switch(lang){
