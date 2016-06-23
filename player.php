@@ -23,7 +23,7 @@ $desc = $row["Description"];
 $name = $row["Name"];
 $user = $row["User"];
 
-echo "<h2><b>".htmlentities($name)."</b></h2>"."<br>By <i>".$user."</i><br>Language: ".$lang."<br>";
+echo "<title>".htmlentities($name)."</title><h2><b>".htmlentities($name)."</b></h2>"."<br>By <i>".$user."</i><br>Language: ".$lang."<br>";
 ?>
 
 
@@ -37,11 +37,22 @@ echo "<h2><b>".htmlentities($name)."</b></h2>"."<br>By <i>".$user."</i><br>Langu
   width: 300px;
   border-color: #00A3C6;
 }
+#show {
+    border-radius: 25px;
+        background: #23241f;
+        color:white;
+            padding: .5em;
+            line-height: 1.4em;
+            word-wrap: normal;
+}
 
 </style>
-
-<iframe class="demo" id="demo"src="#"></iframe>
+</p>Run: <button onclick="updateLive();">Click To Run Code Below</button><br>
+<iframe class="demo" id="demo"src="./blank.html"></iframe>
 <?php echo "<br><i>Description:</i> ".htmlentities($desc);?>
+<br>
+The code for this is <br>
+<p id="show"><?php echo stripslashes(htmlentities($code));?>
 <script type="text/javascript">
 
 
@@ -88,5 +99,5 @@ function updateLive() {
             break;
         }
       }
-updateLive();
+
 </script>
