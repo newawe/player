@@ -1,62 +1,48 @@
-<?php
-//PHP to get project details from DB.
-$servername = "*";
-$username = "*";
-$password = "*";
-$dbname = "*";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+  <style>
+    
+    .projectContainer{
+      width: 250px; /*Easily change the size here*/
+      height: 250px;
+      border: solid 3px #00A3C6;
+      border-radius: 3px;
+      box-shadow: 0 0 3px 0px #000000;
+      background-color: #00A3C6;
+      position: relative;
+      margin: 15px; /*Change this for spacing*/
+    }
+    .projectContainer:hover{
+      box-shadow: 0 0 6px 0px #000000;
+      background-color: #00B0D0;
+      border: solid 3px #00B0D0;
+    }
+    .projectThumb{
+      width: 100%;
+    }
+    .projectTitle{
+      color: #FFFFFF;/*Would be cool if the user could also pick to use an alternate color like #00A3C6*/
+      position: absolute;
+      bottom: 65px;
+      font-size: 30px;
+      text-align: right;
+      width: 100%;
+      font-weight: 600;
+      right: 5px;
+    }
+    .projectDescription{
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      margin: 5px;
+      color: #FFFFFF;
+      font-size:20px;
+    }
+    body{
+      background-color: #F7F7F7; 
+    }
+  </style>
 
-
-$query = mysqli_query($conn,"SELECT * FROM Newawe_Project_Test");
-$projects = [];
-while ($row = mysqli_fetch_assoc($query)) {
-    $projects[] = $row;
-}
-?>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  <div class="row">
-<?php
-foreach($projects as $project){
-
-echo <<< _END
-
-
-
-        <div class="col s3 m3">
-          <div class="card small">
-            <div class="card-image">
-              <img src="http://materializecss.com/images/sample-1.jpg">
-              <span class="card-title">
-_END;
-echo substr($project['Name'],0,20);
-if(strlen($project['Name'])>19)echo "...";    //If the string is longer than 20 chars, cut it off and add a ...       
-echo <<< _END
-</span>
-            </div>
-            <div class="card-content">
-              <p>
-_END;
-echo substr($project['Description'],0,20);
-if(strlen($project['Description'])>19)echo "...";    //If the string is longer than 20 chars, cut it off and add a ...       
-echo <<< _END
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="./player.php?id={$project['ID']}">Go To</a>
-            </div>
-          </div>
-        </div>
-_END;
-}
-?>
-      </div>
+<div class="projectContainer">
+  <img class="projectThumb" src="http://materializecss.com/images/sample-1.jpg"><!--Example-->
+<div class="projectTitle">Example Title</div>
+  <div class="projectDescription">Example Description</div><!--Make sure to limit to two lines-->
+</div>
