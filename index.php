@@ -9,6 +9,7 @@
       background-color: #00A3C6;
       position: relative;
       margin: 15px; /*Change this for spacing*/
+      display: inline-block;
     }
     .projectContainer:hover{
       box-shadow: 0 0 6px 0px #000000;
@@ -40,9 +41,52 @@
       background-color: #F7F7F7; 
     }
   </style>
+  
 
+<?php
+//PHP to get project details from DB.
+$servername = "*";
+$username = "*";
+$password = "*";
+$dbname = "*";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+$query = mysqli_query($conn,"SELECT * FROM Newawe_Project_Test");
+$projects = [];
+while ($row = mysqli_fetch_assoc($query)) {
+    $projects[] = $row;
+}
+?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<?php
+foreach($projects as $project){
+
+echo <<< _END
+<a href="./player.php?id={$project['ID']}">
 <div class="projectContainer">
-  <img class="projectThumb" src="http://materializecss.com/images/sample-1.jpg"><!--Example-->
-<div class="projectTitle">Example Title</div>
-  <div class="projectDescription">Example Description</div><!--Make sure to limit to two lines-->
+  <img class="projectThumb" src="http://materializecss.com/images/sample-1.jpg">
+<div class="projectTitle">
+_END;
+echo substr($project['Name'],0,20);
+if(strlen($project['Name'])>19)echo "...";    //If the string is longer than 20 chars, cut it off and add a ...       
+echo <<< _END
 </div>
+ <div class="projectDescription">           
+_END;
+echo substr($project['Description'],0,20);
+if(strlen($project['Description'])>19)echo "...";    //If the string is longer than 20 chars, cut it off and add a ...       
+echo <<< _END
+              </div>
+              </div>
+              </a>
+
+_END;
+}
+?>
