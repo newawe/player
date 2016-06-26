@@ -1,4 +1,26 @@
-
+<?php
+//PHP to get project details from DB.
+$code;
+$lang;
+$id = htmlentities($_GET['id']);
+$servername = "*";
+$username = "*";
+$password = "*";
+$dbname = "*";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$project = mysqli_query($conn,"SELECT * FROM Newawe_Project_Test WHERE id = $id");
+$row = mysqli_fetch_assoc($project);
+$lang = $row["Lang"];
+$code = addslashes($row["Code"]);
+$code = str_replace(array("\n", "\r"), '', $code);
+$desc = $row["Description"];
+$name = $row["Name"];
+$user = $row["User"];
+?>
 <!--- Didn't remember what font to import. Sorry :(  -->
 
 <style>
@@ -82,22 +104,22 @@
 </style>
 <div class="playerTopBar">
   <h2 id="projectTitle">
-    Example Title
+<?php echo $name;?>
   </h2>
   <p id="projectLanguage">
-    Base language is: Example Language
+  <?php echo $lang;?>
   </p>
 </div>
 <iframe class="demo" id="demo"src="./blank.html"></iframe>
 <div class="noBottom">
 <p id="projectDescription" class="noBottom">
-  <i>Description:</i> Example DescriptionExample DescriptionExample DescriptionExample DescriptionExample DescriptionExample Example
+  <i>Description:</i><?php echo htmlentities($desc);?>
 </p>
 <button id="playerButton" onclick="updateLive();">
   Run Code
 </button>
 </div>
-<p id="show">Code hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode hereCode here</p>
+<p id="show"><?php echo htmlentities($code);?></p>
   
   
   
