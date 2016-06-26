@@ -21,7 +21,7 @@ $desc = $row["Description"];
 $name = $row["Name"];
 $user = $row["User"];
 ?>
-<!--- Didn't remember what font to import. Sorry :(  -->
+
 
 <style>
   
@@ -110,25 +110,20 @@ $user = $row["User"];
   <?php echo $lang;?>
   </p>
 </div>
-<iframe class="demo" id="demo"src="./blank.html"></iframe>
+<iframe class="demo" id="demo"src="http://newawe.github.io/Sandbox/html.html?code=<i>Press the button to run the code...</i>"></iframe>
 <div class="noBottom">
 <p id="projectDescription" class="noBottom">
-  <i>Description:</i><?php echo htmlentities($desc);?>
+  <i>Description: </i><?php echo htmlentities($desc);?>
 </p>
-<button id="playerButton" onclick="updateLive();">
+
+</div>
+<p id="show"><?php echo htmlentities($code);?></p><button id="playerButton" onclick="updateLive();">
   Run Code
 </button>
-</div>
-<p id="show"><?php echo htmlentities($code);?></p>
   
   
   
   <script type="text/javascript">
-
-
-
-
-
     //All Info Defined Here
     var code = "<?php echo $code; ?>";
     var lang = "<?php echo $lang; ?>";
@@ -165,5 +160,4 @@ $user = $row["User"];
           break;
       }
     }
-
   </script>
