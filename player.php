@@ -134,26 +134,26 @@ $user = $row["User"];
           document.getElementById('demo').src = "http://newawe.github.io/Sandbox/html.html?code="+code;
           break;
         case "ruby":
-          document.getElementById('demo').src = "http://ronskons.tk/ruby.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/ruby.php?code="+code;
           break;
         case "php":
-          document.getElementById('demo').src = "http://ronskons.tk/php.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/php.php?code="+code;
           break;
         case "mysql":
-          document.getElementById('demo').src = "http://ronskons.tk/mysql.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/mysql.php?code="+code;
           break;
         case "perl":
-          document.getElementById('demo').src = "http://ronskons.tk/perl.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/perl.php?code="+code;
           break;
         case "javascript":
           document.getElementById('demo').src = "http://newawe.github.io/Sandbox/javascript.html?code="+code;
           break;
         case "java":
-          document.getElementById('demo').src = "http://ronskons.tk/java.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/java.php?code="+code;
           break;
         case "python":
           code = code.replace("/\n/g", "<br />");
-          document.getElementById('demo').src = "http://ronskons.tk/python.php?code="+code;
+          document.getElementById('demo').src = "http://toolserver.newawe.com/sandbox/python.php?code="+code;
           break;
         default:
           document.getElementById('demo').src = "http://newawe.github.io/Sandbox/html.html?code=<pre>This language is currently not supported for <br>live testing.";
